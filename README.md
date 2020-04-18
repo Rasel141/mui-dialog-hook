@@ -1,68 +1,82 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p style="text-align: center;" align="center">
+    <h1 align="center">mui-dialog-hook</h1>
+</p>
+<p align="center">🖼 React hook for Modals</p>
+<p align="center">
+    <a href="https://github.com/Rasel141/mui-dialog-hook/pulls">
+      <img src="https://camo.githubusercontent.com/d4e0f63e9613ee474a7dfdc23c240b9795712c96/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5052732d77656c636f6d652d627269676874677265656e2e737667" />
+    </a>
+</p>
 
-## Available Scripts
+Simple, lightweight hook for Modals/Dialogs.
 
-In the project directory, you can run:
+This hook is also isomorphic, meaning it works with SSR (server side rendering).
 
-### `yarn start`
+Features
+--------
+- SSR (server side rendering) support
+- TypeScript support
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Examples
+- [Example](https://codesandbox.io/s/mui-dialog-hook-5t7ig)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Installation
+------------
 
-### `yarn test`
+```shell
+yarn add mui-dialog-hook      or     npm i -S mui-dialog-hook
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Usage
+-----
 
-### `yarn build`
+### Basic Usage
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```jsx 
+import React from "react";
+// import PrimaryDialog, {
+//   usePrimaryDialog,
+// } from "./components/dialog/mui-dialog-hook";
+import PrimaryDialog, {
+  usePrimaryDialog,
+} from "mui-dialog-hook";
+import { Button } from "@material-ui/core";
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+const TestDialog = () => {
+  const { openPrimary, togglePrimary } = usePrimaryDialog();
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  return (
+    <div>
+      <PrimaryDialog
+        openPrimary={openPrimary}
+        togglePrimary={togglePrimary}
+        width={530}
+        scrollType="body"
+        // hideCrossBtn
+      >
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore alias
+          dolore illo ea explicabo minus id soluta tempora vitae aut neque ullam
+          totam maxime excepturi, fugit amet, qui ipsam? Voluptas?
+        </p>
+      </PrimaryDialog>
 
-### `yarn eject`
+      <Button color="primary" onClick={togglePrimary}>
+        open Dialog{" "}
+      </Button>
+    </div>
+  );
+};
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+export default TestDialog;
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+PrimaryDialog props
+-----
+| props                | Description                                                                              |
+| --------------------- | ---------------------------------------------------------------------------------------- |
+| `hideCrossBtn` | hide cross button |
+| `scrollType` |  `body` || `paper` |
+| `width`   | paper width    |
