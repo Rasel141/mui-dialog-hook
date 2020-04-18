@@ -1,7 +1,7 @@
 import React from "react";
 import PrimaryDialog, {
   usePrimaryDialog,
-} from "./components/dialog/mui-hook-dialog";
+} from "./components/dialog/mui-dialog-hook";
 import { Button } from "@material-ui/core";
 
 const TestDialog = () => {
